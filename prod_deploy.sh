@@ -18,7 +18,7 @@ msg "Building Go binary"
 go build
 
 msg "Starting server"
-nohup sudo ./server &/dev/null &
+nohup sudo ./server &>/dev/null &
 
 duration=$SECONDS
 
