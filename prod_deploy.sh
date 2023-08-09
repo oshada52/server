@@ -7,18 +7,19 @@ msg() {
   echo -e "$1\n------------------\n"
 }
 
-msg "Stopping app"
-sudo pkill server
 
 msg "Pulling from Github"
 git pull
 
+msg "Building Docker image"
+sudo docker build --tag server .
 
-msg "Building Go binary"
-go build
+msg "Stopping Docker container"
+sudo docker stop server_c
+sudo docker rm server_c
 
-msg "Starting server"
-nohup sudo ./server &>/dev/null &
+msg "Starting Docker container"
+sudo docker run -d --name server_c --expose 443 -p 443:443 -v /etc/letsencrypt:/etc/letsencrypt -e SERVER_ENV=PROD server
 
 duration=$SECONDS
 
