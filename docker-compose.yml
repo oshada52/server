@@ -1,6 +1,6 @@
 services:
   server:
-    image: server:v3
+    image: server
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     volumes:
