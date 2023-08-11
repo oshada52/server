@@ -15,5 +15,5 @@ services:
     volumes:
       - ${VOLUME}:/var/lib/postgresql/data:rw
     environment:
-      POSTGRES_PASSWORD: dwoshada
+      POSTGRES_PASSWORD: Dwoshada
     
