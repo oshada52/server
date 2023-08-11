@@ -2,9 +2,11 @@ services:
   server:
     image: server:v3
     ports:
-      - 8080:8080
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
     environment:
-      SERVER_ENV: DEV
+      SERVER_ENV: ${SERVER_ENV}
   
   pg-db:
     image: postgres:15.3-alpine3.18

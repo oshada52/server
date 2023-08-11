@@ -11,15 +11,17 @@ msg() {
 msg "Pulling from Github"
 git pull
 
-msg "Building Docker image"
+msg "Building Docker 'server' image"
 sudo docker build --tag server .
 
-msg "Stopping Docker container"
-sudo docker stop server_c
-sudo docker rm server_c
+msg "Stopping containers"
+sudo docker compose down
 
-msg "Starting Docker container"
-sudo docker run -d --name server_c --expose 443 -p 443:443 -v /etc/letsencrypt:/etc/letsencrypt -e SERVER_ENV=PROD server
+msg "Starting containers"
+sudo docker compose up -d
+
+msg "Purning stale Docker images"
+sudo docker image prune -f
 
 duration=$SECONDS
 
