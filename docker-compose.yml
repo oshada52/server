@@ -13,7 +13,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - /home/oshada/projects/ceyloninfo/db:/var/lib/postgresql/data:rw
+      - ${VOLUME}:/var/lib/postgresql/data:rw
     environment:
       POSTGRES_PASSWORD: dwoshada
     
