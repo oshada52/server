@@ -13,7 +13,11 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ${VOLUME}:/var/lib/postgresql/data:rw
+      - server-db:/var/lib/postgresql/data:rw
     environment:
       POSTGRES_PASSWORD: Dwoshada
+
+volumes:
+  server-db:
+    external: true
     
