@@ -1,2 +1,1 @@
-# server
-just experimental go server
+go server + postgres db + docker
